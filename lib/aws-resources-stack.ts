@@ -69,9 +69,14 @@ export class AwsResourcesStack extends cdk.Stack {
                     statements: [
                         new iam.PolicyStatement({
                             effect: Effect.ALLOW,
-                            resources: [`arn:aws:s3:::${this.S3_ROOT_DIR}/*`],
+                            resources: [
+                                `arn:aws:s3:::${this.S3_ROOT_DIR}`,
+                                `arn:aws:s3:::${this.S3_ROOT_DIR}/*`
+                            ],
                             actions: [
                                 "s3:PutObject",
+                                "s3:ListBucket",
+                                "s3:PutObjectAcl"
                             ]
                         })
                     ]
